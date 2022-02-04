@@ -14,6 +14,7 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:id="@+id/jokes_et"
+        app:layout_constraintTop_toBottomOf="@id/jokes_rv"
         app:layout_constraintBottom_toTopOf="@id/reload_button"
         android:hint="@string/number"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,6 +29,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/jokes_rv"/>
+        app:layout_constraintTop_toBottomOf="@id/jokes_et"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

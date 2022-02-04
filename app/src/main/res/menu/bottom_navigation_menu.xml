@@ -3,13 +3,15 @@
     <item
         android:id="@+id/one"
         android:title="@string/jokes"
-        android:enabled="true">
+        android:enabled="true"
+        android:icon="@drawable/crown">
     </item>
 
     <item
         android:id="@+id/two"
         android:title="@string/web"
-        android:enabled="true">
+        android:enabled="true"
+        android:icon="@drawable/web">
     </item>
 
 </menu>

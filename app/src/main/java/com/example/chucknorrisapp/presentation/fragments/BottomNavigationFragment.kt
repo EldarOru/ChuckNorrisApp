@@ -9,18 +9,19 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.chucknorrisapp.R
 import com.example.chucknorrisapp.databinding.BottomNavigationFragmentBinding
+import com.example.chucknorrisapp.presentation.activities.MainActivity
 import java.lang.RuntimeException
 
 class BottomNavigationFragment: Fragment() {
     private lateinit var onFragmentsInteractionsListener: OnFragmentInteractionsListener
-    private var bottomNavigationFragmentBinding: BottomNavigationFragmentBinding? = null
+    private lateinit var bottomNavigationFragmentBinding: BottomNavigationFragmentBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        bottomNavigationFragmentBinding =  BottomNavigationFragmentBinding.inflate(inflater, container, false)
-        return bottomNavigationFragmentBinding?.root
+        bottomNavigationFragmentBinding = BottomNavigationFragmentBinding.inflate(inflater, container, false)
+        return bottomNavigationFragmentBinding.root
     }
 
     override fun onAttach(context: Context) {
@@ -34,14 +35,14 @@ class BottomNavigationFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        bottomNavigationFragmentBinding?.bottomNavigation?.setOnItemSelectedListener {
+        bottomNavigationFragmentBinding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.one -> {
-                    onFragmentsInteractionsListener.onChangeFragment(MainFragment())
+                    onFragmentsInteractionsListener.onChangeFragment(MainFragment(), MainActivity.mainFragmentTag)
                     return@setOnItemSelectedListener true
                 }
                 R.id.two -> {
-                    onFragmentsInteractionsListener.onChangeFragment(MainFragment())
+                    onFragmentsInteractionsListener.onChangeFragment(WebFragment(),MainActivity.webFragmentTag)
                     return@setOnItemSelectedListener true
                 }
                 else -> {
@@ -50,5 +51,6 @@ class BottomNavigationFragment: Fragment() {
                 }
             }
         }
+
     }
 }

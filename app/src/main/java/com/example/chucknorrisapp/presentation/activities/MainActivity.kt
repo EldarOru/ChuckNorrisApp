@@ -1,13 +1,14 @@
 package com.example.chucknorrisapp.presentation.activities
 
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.chucknorrisapp.R
 import com.example.chucknorrisapp.databinding.ActivityMainBinding
-import com.example.chucknorrisapp.presentation.fragments.BottomNavigationFragment
-import com.example.chucknorrisapp.presentation.fragments.MainFragment
-import com.example.chucknorrisapp.presentation.fragments.OnFragmentInteractionsListener
+import com.example.chucknorrisapp.databinding.WebFragmentBinding
+import com.example.chucknorrisapp.presentation.fragments.*
 
 class MainActivity : AppCompatActivity(), OnFragmentInteractionsListener {
     private lateinit var mainActivityBinding: ActivityMainBinding
@@ -17,14 +18,14 @@ class MainActivity : AppCompatActivity(), OnFragmentInteractionsListener {
         setContentView(mainActivityBinding.root)
 
         supportFragmentManager.beginTransaction()
-            .replace(mainActivityBinding.mainContainer.id, MainFragment())
+            .replace(mainActivityBinding.mainContainer.id, MainFragment(), mainFragmentTag)
             .replace(mainActivityBinding.bottomContainer.id, BottomNavigationFragment())
             .commit()
     }
 
-    override fun onChangeFragment(fragment: Fragment) {
+    override fun onChangeFragment(fragment: Fragment, tag: String) {
         supportFragmentManager.beginTransaction()
-            .replace(mainActivityBinding.mainContainer.id, fragment)
+            .replace(mainActivityBinding.mainContainer.id, fragment, tag)
             .commit()
     }
 
@@ -39,5 +40,10 @@ class MainActivity : AppCompatActivity(), OnFragmentInteractionsListener {
         for(i in 0..supportFragmentManager.backStackEntryCount) {
             supportFragmentManager.popBackStack()
         }
+    }
+
+    companion object{
+        const val mainFragmentTag = "MAIN_FRAGMENT"
+        const val webFragmentTag = "WEB_FRAGMENT"
     }
 }

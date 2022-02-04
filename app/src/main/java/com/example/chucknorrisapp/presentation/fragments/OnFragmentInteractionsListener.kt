@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 
 interface OnFragmentInteractionsListener {
 
-    fun onChangeFragment(fragment: Fragment)
+    fun onChangeFragment(fragment: Fragment, tag: String)
 
     fun onAddBackStack(name: String, fragment: Fragment)
 
