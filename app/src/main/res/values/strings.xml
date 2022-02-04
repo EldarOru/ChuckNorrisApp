@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ChuckNorrisApp</string>
+    <string name="jokes">Jokes</string>
+    <string name="web">Web</string>
+    <string name="reload">Reload</string>
+    <string name="number">Number</string>
+</resources>
